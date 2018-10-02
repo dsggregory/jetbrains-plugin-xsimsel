@@ -22,7 +22,7 @@ public class XSimulateSelectionComponent extends AbstractProjectComponent {
     }
 
     public void initComponent() {
-        log.info("component inited");
+        log.debug("component inited");
     }
 
     public void disposeComponent() {
@@ -47,6 +47,8 @@ public class XSimulateSelectionComponent extends AbstractProjectComponent {
                     }
                 };
                 SelectionModel model = source.getSelectedTextEditor().getSelectionModel();
+                // remove current selection or listener(s) won't fire until all selections are manually removed
+                model.removeSelection();
                 log.debug("adding listener model = " + model.toString());
                 model.addSelectionListener(sl);
             }
@@ -56,6 +58,7 @@ public class XSimulateSelectionComponent extends AbstractProjectComponent {
             @Override
             public void selectionChanged(@NotNull FileEditorManagerEvent event) {
                 // NOTE: This is NOT text selection in an editor!
+                log.debug("fileEditorManager selectionChanged");
             }
         });
     }
