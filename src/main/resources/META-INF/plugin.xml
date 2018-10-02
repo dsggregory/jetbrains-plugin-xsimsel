@@ -1,0 +1,30 @@
+<idea-plugin>
+    <id>com.dsg.xsimsel</id>
+    <name>x-sim-sel</name>
+    <vendor email="dsg.gregory-jbplugin@gmail.com">DSG</vendor>
+
+    <description><![CDATA[
+    Simulate X11 paste of selected text using middle mouse button without an intervening copy.
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <project-components>
+        <component>
+            <implementation-class>com.dsg.xsimsel.XSimulateSelectionComponent</implementation-class>
+        </component>
+    </project-components>
+
+    <actions>
+        <action id="MyPlugin.XSimulateSelectionAction" class="com.dsg.xsimsel.XSimulateSelectionAction" text="Paste, Simulate X Middle Button"
+                description="Simulate X middle button paste of last highlighted text">
+            <add-to-group group-id="EditorActions" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt V"/>
+            <mouse-shortcut keymap="$default" keystroke="Button2 Click" />
+        </action>
+    </actions>
+</idea-plugin>
