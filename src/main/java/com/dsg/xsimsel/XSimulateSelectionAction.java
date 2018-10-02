@@ -8,10 +8,13 @@ import com.intellij.openapi.command.UndoConfirmationPolicy;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.diagnostic.Logger;
 
 import static com.intellij.openapi.application.ApplicationManager.getApplication;
 
 public class XSimulateSelectionAction extends AnAction {
+
+    private static final Logger log = Logger.getInstance(XSimulateSelectionAction.class);
 
     private void insertToEditor(Project project, Editor editor, String str) {
         CommandProcessor.getInstance().executeCommand(project, () -> getApplication().runWriteAction(() -> {
@@ -32,6 +35,7 @@ public class XSimulateSelectionAction extends AnAction {
         final Editor editor = e.getData(CommonDataKeys.EDITOR);
 
         XSimulateSelectionComponent comp = project.getComponent(XSimulateSelectionComponent.class);
+        log.debug("actionPerformed has sel = " + comp.hasSelectionText());
         if(comp!=null && comp.hasSelectionText())
             insertToEditor(project, editor, comp.getCurrentSelection());
     }
@@ -44,6 +48,6 @@ public class XSimulateSelectionAction extends AnAction {
         Boolean pe = (project != null && editor != null);
         // we could check that there has been a selection, but 99.9999% of the time, there will have been.
         e.getPresentation().setEnabledAndVisible(pe);
-        System.out.print("vis: pe=" + pe + "\n");
+        log.debug("vis: pe=" + pe + "\n");
     }
 }

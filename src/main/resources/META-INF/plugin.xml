@@ -4,14 +4,14 @@
     <vendor email="dsg.gregory-jbplugin@gmail.com">DSG</vendor>
 
     <description><![CDATA[
-    Simulate X11 paste of selected text using middle mouse button without an intervening copy.
+    Simulate X11 paste of selected text using middle mouse button without an intervening copy.<br/>
+    You must assign middle mouse button to the action by going to <em>Preferences | Keymaps | Plugins | x-sim-sel</em> and right click on the expanded action name to add a mouse shortcut.
     ]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
-    <!-- uncomment to enable plugin in all products
+    <!-- enable in all jetbrains IDEs -->
     <depends>com.intellij.modules.lang</depends>
-    -->
 
     <project-components>
         <component>
@@ -24,7 +24,7 @@
                 description="Simulate X middle button paste of last highlighted text">
             <add-to-group group-id="EditorActions" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt V"/>
-            <mouse-shortcut keymap="$default" keystroke="Button2 Click" />
+            <mouse-shortcut keymap="$default" keystroke="button2" />
         </action>
     </actions>
 </idea-plugin>

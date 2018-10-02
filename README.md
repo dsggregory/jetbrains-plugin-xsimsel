@@ -14,7 +14,9 @@ Once built, deploy the file `./build/libs/xsimsel-{version}.jar` to a host runni
 You must explicitly use the menu **Preferences | Keymaps**, scroll down to x-sim-sel and right click to add a mouse shortcut. You may want to assign the shortcut to the middle mouse button by clicking it in the resulting dialog. Ignore the warning that it may already be defined for other actions. You may leave the other actions undisturbed.
 
 ## Build
-You have to use intellij to build it. Just import the top directory and watch it go. May take some time to initially load all deps (gradle, et.al.)
+You have to use intellij to build it, but not with the `Build` menu, unless you are building it to use from a Run configuration (or Debug).
+
+Open the Gradle tab on the far right of the IDE. Expand `Tasks/build` and double-click `build`.
 
 Edit `./build.gradle` to set the version of the plugin.
 
@@ -22,10 +24,15 @@ Edit `./build.gradle` to set the version of the plugin.
 You can run the plugin in an intellij sandbox using the intellij run configuration.
 
 ## Code
-The _component_ element in `./src/main/resources/META-INF/plugin.xml` defines the test-selection change handler.
+The _component_ element in `./src/main/resources/META-INF/plugin.xml` defines the text selection-change handler.
 The _actions_ element in `./src/main/resources/META-INF/plugin.xml` defines the Edit menu item to be added to provide simulating X middle button
 including key and button defaults for the action.
 
 ## References
 * http://www.jetbrains.org/intellij/sdk/docs/welcome.html
 * https://www.programcreek.com/java-api-examples/?api=com.intellij.openapi.command.CommandProcessor
+
+## TODO
+* 2018-10-02 11:10:07,468 [   4978]  ERROR - nSystem.impl.ActionManagerImpl - "keystroke" attribute has invalid value for action with id=MyPlugin.XSimulateSelectionAction [Plugin: com.dsg.xsimsel] 
+  com.intellij.diagnostic.PluginException: "keystroke" attribute has invalid value for action with id=MyPlugin.XSimulateSelectionAction [Plugin: com.dsg.xsimsel]
+* Seems like selection listener not getting called in GOLAND until after a one-time COPY (^C) of anything
