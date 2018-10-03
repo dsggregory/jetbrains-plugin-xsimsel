@@ -32,7 +32,3 @@ including key and button defaults for the action.
 * http://www.jetbrains.org/intellij/sdk/docs/welcome.html
 * https://www.programcreek.com/java-api-examples/?api=com.intellij.openapi.command.CommandProcessor
 
-## TODO
-* 2018-10-02 11:10:07,468 [   4978]  ERROR - nSystem.impl.ActionManagerImpl - "keystroke" attribute has invalid value for action with id=MyPlugin.XSimulateSelectionAction [Plugin: com.dsg.xsimsel] 
-  com.intellij.diagnostic.PluginException: "keystroke" attribute has invalid value for action with id=MyPlugin.XSimulateSelectionAction [Plugin: com.dsg.xsimsel]
-* Seems like selection listener not getting called in GOLAND until after a one-time COPY (^C) of anything
