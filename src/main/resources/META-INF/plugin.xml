@@ -1,11 +1,10 @@
 <idea-plugin>
     <id>com.dsg.xsimsel</id>
     <name>x-sim-sel</name>
-    <vendor email="dsg.gregory-jbplugin@gmail.com">DSG</vendor>
+    <vendor email="dsg.gregory-jbplugin@gmail.com" url="https://github.com/dsggregory/jetbrains-plugin-xsimsel">DSG</vendor>
 
     <description><![CDATA[
-    Simulate X11 paste of selected text using middle mouse button without an intervening copy.<br/>
-    You must assign middle mouse button to the action by going to <em>Preferences | Keymaps | Plugins | x-sim-sel</em> and right click on the expanded action name to add a mouse shortcut.
+    Simulate X11 paste of selected text using middle mouse button without an intervening copy.
     ]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
@@ -19,19 +18,16 @@
         </component>
     </project-components>
 
-    <!-- actions are defined in code in XSimulateSelectionComponent.java
     <actions>
-        <action id="MyPlugin.XSimulateSelectionAction" class="com.dsg.xsimsel.XSimulateSelectionAction" text="Paste, Simulate X Middle Button"
+        <action id="XSimulateSelectionAction" class="com.dsg.xsimsel.XSimulateSelectionAction"
+                text="Paste, Simulate X Middle Button"
                 description="Simulate X middle button paste of last highlighted text">
             <add-to-group group-id="EditorActions" anchor="first"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt V"/>
             <mouse-shortcut keymap="$default" keystroke="button2" />
         </action>
-        <action class="com.dsg.xsimsel.XSimulateSelectionLoggingAction" id="MyPlugin.XSimulateSelectionLogginAction"
+        <action id="XSimulateSelectionLogginAction" class="com.dsg.xsimsel.XSimulateSelectionLoggingAction"
                 text="Toggle x-sim-sel logging">
-            <add-to-group group-id="EditorActions" anchor="first"/>
             <keyboard-shortcut first-keystroke="shift ctrl alt ." keymap="$default"/>
         </action>
     </actions>
-    -->
 </idea-plugin>

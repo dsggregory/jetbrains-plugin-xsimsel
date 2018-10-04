@@ -52,9 +52,4 @@ public class XSimulateSelectionAction extends AnAction {
             e.getPresentation().setEnabledAndVisible(pe);
         log.debug("vis: pe=" + pe + "\n");
     }
-
-    void setLogLevel(Level level) {
-        log.info("Action Log level toggled to " + level);
-        log.setLevel(level);
-    }
 }
