@@ -9,6 +9,7 @@ import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.diagnostic.Logger;
+import org.apache.log4j.Level;
 
 import static com.intellij.openapi.application.ApplicationManager.getApplication;
 
@@ -47,7 +48,8 @@ public class XSimulateSelectionAction extends AnAction {
         final Editor editor = e.getData(CommonDataKeys.EDITOR);
         Boolean pe = (project != null && editor != null);
         // we could check that there has been a selection, but 99.9999% of the time, there will have been.
-        e.getPresentation().setEnabledAndVisible(pe);
+        if(e != null)
+            e.getPresentation().setEnabledAndVisible(pe);
         log.debug("vis: pe=" + pe + "\n");
     }
 }

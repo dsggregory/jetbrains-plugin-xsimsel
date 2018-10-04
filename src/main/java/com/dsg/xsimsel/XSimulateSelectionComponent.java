@@ -1,5 +1,6 @@
 package com.dsg.xsimsel;
 
+import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.editor.event.SelectionListener;
@@ -9,9 +10,12 @@ import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.messages.MessageBusConnection;
+import org.apache.log4j.Level;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.diagnostic.Logger;
 
+import javax.swing.*;
+import java.awt.event.InputEvent;
 import java.util.Objects;
 
 public class XSimulateSelectionComponent extends AbstractProjectComponent {
@@ -71,4 +75,13 @@ public class XSimulateSelectionComponent extends AbstractProjectComponent {
 
     private String currentSelection=null;
 
+    void toggleLogLevel() {
+        Level level;
+        if(log.isDebugEnabled())
+            level = Level.INFO;
+        else
+            level = Level.DEBUG;
+        log.info("Component Log level toggled to " + level);
+        log.setLevel(level);
+    }
 }
