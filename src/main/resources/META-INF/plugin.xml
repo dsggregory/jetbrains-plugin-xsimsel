@@ -19,6 +19,7 @@
         </component>
     </project-components>
 
+    <!-- actions are defined in code in XSimulateSelectionComponent.java
     <actions>
         <action id="MyPlugin.XSimulateSelectionAction" class="com.dsg.xsimsel.XSimulateSelectionAction" text="Paste, Simulate X Middle Button"
                 description="Simulate X middle button paste of last highlighted text">
@@ -26,5 +27,11 @@
             <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt V"/>
             <mouse-shortcut keymap="$default" keystroke="button2" />
         </action>
+        <action class="com.dsg.xsimsel.XSimulateSelectionLoggingAction" id="MyPlugin.XSimulateSelectionLogginAction"
+                text="Toggle x-sim-sel logging">
+            <add-to-group group-id="EditorActions" anchor="first"/>
+            <keyboard-shortcut first-keystroke="shift ctrl alt ." keymap="$default"/>
+        </action>
     </actions>
+    -->
 </idea-plugin>
