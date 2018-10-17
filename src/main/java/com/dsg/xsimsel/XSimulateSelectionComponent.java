@@ -2,6 +2,7 @@ package com.dsg.xsimsel;
 
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.components.AbstractProjectComponent;
+import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.editor.event.SelectionListener;
 import com.intellij.openapi.fileEditor.FileEditorManager;
@@ -50,11 +51,14 @@ public class XSimulateSelectionComponent extends AbstractProjectComponent {
                         log.debug("currentSelection is " + currentSelection);
                     }
                 };
-                SelectionModel model = source.getSelectedTextEditor().getSelectionModel();
-                // remove current selection or listener(s) won't fire until all selections are manually removed
-                model.removeSelection();
-                log.debug("adding listener model = " + model.toString());
-                model.addSelectionListener(sl);
+                Editor editor = source.getSelectedTextEditor();
+                if(editor != null) {
+                    SelectionModel model = editor.getSelectionModel();
+                    // remove current selection or listener(s) won't fire until all selections are manually removed
+                    model.removeSelection();
+                    log.debug("adding listener model = " + model.toString());
+                    model.addSelectionListener(sl);
+                }
             }
             @Override
             public void fileClosed(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
